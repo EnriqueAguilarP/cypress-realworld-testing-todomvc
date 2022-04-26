@@ -16,6 +16,13 @@ describe("React TodoMVC", () => {
         cy.get(".todo-list li").eq(0).find("label").should("contain", TODO_ITEM_ONE)
     })
 
+    it("should append new items to the botton of the list", () => {
+        cy.createDefaultTodos()
+        cy.get(".todo-list li").eq(0).find("label").should("contain", TODO_ITEM_ONE)
+        cy.get(".todo-list li").eq(1).find("label").should("contain", TODO_ITEM_TWO)
+        cy.get(".todo-list li").eq(2).find("label").should("contain", TODO_ITEM_THREE)
+    })
+
     it("add three todos", () => {
         cy.createDefaultTodos()
         cy.get(".todo-list li").should("have.length", 3)
