@@ -11,7 +11,9 @@ describe("React TodoMVC", () => {
     it("adds a single todo", () => {
         
         cy.get(".new-todo").type(`${TODO_ITEM_ONE}{enter}`)
-        cy.get(".todo-list li").should("have.length", 1)
+        //Get the first li element from todo list and within that li element look for label element
+        //Finally, make sure that this label contains the text of our TODO item one
+        cy.get(".todo-list li").eq(0).find("label").should("contain", TODO_ITEM_ONE)
     })
 
     it("add three todos", () => {
